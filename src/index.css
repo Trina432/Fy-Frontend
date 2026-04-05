@@ -1,0 +1,372 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 48 97% 53%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 20%;
+
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --neo-blue: 217 91% 60%;
+    --neo-blue-foreground: 0 0% 100%;
+
+    --neo-yellow: 48 97% 53%;
+    --neo-yellow-foreground: 0 0% 0%;
+
+    --neo-purple: 262 83% 58%;
+    --neo-purple-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 32 95% 44%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 0 0% 0%;
+    --input: 0 0% 0%;
+    --ring: 0 0% 0%;
+
+    --radius: 0px;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 0 0% 0%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 48 97% 53%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 0 0% 0%;
+    --sidebar-ring: 0 0% 0%;
+  }
+
+  .dark {
+    --background: 240 10% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 10% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 10% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 0% 95%;
+    --primary-foreground: 240 10% 8%;
+
+    --secondary: 38 92% 50%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 240 8% 20%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 280 100% 65%;
+    --accent-foreground: 0 0% 0%;
+
+    --neo-blue: 200 100% 65%;
+    --neo-blue-foreground: 0 0% 0%;
+
+    --neo-yellow: 38 92% 55%;
+    --neo-yellow-foreground: 0 0% 0%;
+
+    --neo-purple: 280 100% 70%;
+    --neo-purple-foreground: 0 0% 0%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 18 100% 50%;
+    --warning-foreground: 0 0% 0%;
+
+    --border: 0 0% 95%;
+    --input: 0 0% 95%;
+    --ring: 280 100% 70%;
+
+    --sidebar-background: 240 10% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 0% 95%;
+    --sidebar-primary-foreground: 240 10% 8%;
+    --sidebar-accent: 38 92% 50%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 0 0% 95%;
+    --sidebar-ring: 280 100% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer utilities {
+  /* NEOBRUTALIST BACKGROUNDS */
+  .bg-grid {
+    background-image:
+      linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .dark .bg-grid {
+    background-image:
+      linear-gradient(hsl(0 0% 100% / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 100% / 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-polka {
+    background-color: hsl(0 0% 100%);
+    background-image: radial-gradient(hsl(0 0% 0% / 0.15) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+
+  .dark .bg-polka {
+    background-color: hsl(240 10% 12%);
+    background-image: radial-gradient(hsl(0 0% 100% / 0.2) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+
+  .dark .bg-polka-purple {
+    background-color: hsl(var(--neo-purple));
+    background-image: radial-gradient(hsl(0 0% 100% / 0.3) 2.5px, transparent 2.5px);
+    background-size: 20px 20px;
+  }
+
+  .bg-polka-purple {
+    background-color: hsl(262, 76%, 66%);
+    background-image: radial-gradient(hsl(0 0% 100% / 0.4) 2px, transparent 2px);
+    background-size: 20px 20px;
+  }
+
+  /* Dark theme specific button styles */
+  .dark .apply-now-btn {
+    background-color: hsl(var(--destructive)) !important;
+    color: hsl(var(--destructive-foreground)) !important;
+    border-color: hsl(var(--destructive)) !important;
+  }
+
+  .dark .apply-now-btn:hover {
+    background-color: hsl(0 84% 70%) !important;
+    border-color: hsl(0 84% 70%) !important;
+  }
+
+  /* Dark theme colored card borders */
+  .dark .card-border-blue {
+    border-color: hsl(var(--neo-blue)) !important;
+    box-shadow: 4px 4px 0 hsl(var(--neo-blue)) !important;
+  }
+
+  .dark .card-border-blue:hover {
+    box-shadow: 6px 6px 0 hsl(var(--neo-blue)) !important;
+  }
+
+  .dark .card-border-purple {
+    border-color: hsl(var(--neo-purple)) !important;
+    box-shadow: 4px 4px 0 hsl(var(--neo-purple)) !important;
+  }
+
+  .dark .card-border-purple:hover {
+    box-shadow: 6px 6px 0 hsl(var(--neo-purple)) !important;
+  }
+
+  .dark .card-border-yellow {
+    border-color: hsl(var(--neo-yellow)) !important;
+    box-shadow: 4px 4px 0 hsl(var(--neo-yellow)) !important;
+  }
+
+  .dark .card-border-yellow:hover {
+    box-shadow: 6px 6px 0 hsl(var(--neo-yellow)) !important;
+  }
+
+  .dark .card-border-success {
+    border-color: hsl(var(--success)) !important;
+    box-shadow: 4px 4px 0 hsl(var(--success)) !important;
+  }
+
+  .dark .card-border-success:hover {
+    box-shadow: 6px 6px 0 hsl(var(--success)) !important;
+  }
+
+  /* Dark theme colored text */
+  .dark .footer-gradient {
+    background: linear-gradient(135deg, hsl(var(--neo-purple)) 0%, hsl(330 100% 40%) 100%) !important;
+  }
+
+  /* White theme text visibility fixes */
+  .text-black-on-light {
+    color: hsl(0 0% 0%) !important;
+  }
+
+  .text-black-on-light:hover {
+    color: hsl(0 0% 0%) !important;
+  }
+
+  /* Explicit text colors for both themes */
+  .text-visible-dark {
+    color: hsl(0 0% 0%) !important;
+  }
+
+  .text-visible-light {
+    color: hsl(0 0% 20%) !important;
+  }
+
+  .dark .text-visible-dark {
+    color: hsl(0 0% 95%) !important;
+  }
+
+  .dark .text-visible-light {
+    color: hsl(0 0% 95%) !important;
+  }
+
+  .dark .text-orange {
+    color: hsl(var(--neo-yellow)) !important;
+  }
+
+  .dark .text-purple {
+    color: hsl(var(--neo-purple)) !important;
+  }
+
+  .dark .text-blue {
+    color: hsl(var(--neo-blue)) !important;
+  }
+
+  .dark .text-green {
+    color: hsl(var(--success)) !important;
+  }
+
+  .dark .text-red {
+    color: hsl(var(--destructive)) !important;
+  }
+
+  .dark .text-pink {
+    color: hsl(330 100% 70%) !important;
+  }
+
+  .text-blue {
+    color: hsl(var(--neo-blue)) !important;
+  }
+
+  .text-green {
+    color: hsl(var(--success)) !important;
+  }
+
+  .text-red {
+    color: hsl(var(--destructive)) !important;
+  }
+
+  .text-pink {
+    color: hsl(330 100% 70%) !important;
+  }
+
+  .dark .text-pink-900 {
+    color: hsl(330 100% 40%) !important;
+  }
+
+  .dark .text-white {
+    color: hsl(0 0% 95%) !important;
+  }
+
+  .dark .text-black {
+    color: hsl(0 0% 0%) !important;
+  }
+
+  /* Additional card border colors for features */
+  .dark .card-border-green {
+    border-color: hsl(var(--success)) !important;
+    box-shadow: 4px 4px 0 hsl(var(--success)) !important;
+  }
+
+  .dark .card-border-green:hover {
+    box-shadow: 6px 6px 0 hsl(var(--success)) !important;
+  }
+
+  .dark .card-border-red {
+    border-color: hsl(var(--destructive)) !important;
+    box-shadow: 4px 4px 0 hsl(var(--destructive)) !important;
+  }
+
+  .dark .card-border-red:hover {
+    box-shadow: 6px 6px 0 hsl(var(--destructive)) !important;
+  }
+
+  .dark .card-border-pink {
+    border-color: hsl(330 100% 70%) !important;
+    box-shadow: 4px 4px 0 hsl(330 100% 70%) !important;
+  }
+
+  .dark .card-border-pink:hover {
+    box-shadow: 6px 6px 0 hsl(330 100% 70%) !important;
+  }
+
+  .dark .card-border-pink-900 {
+    border-color: hsl(330 100% 40%) !important;
+    box-shadow: 4px 4px 0 hsl(330 100% 40%) !important;
+  }
+
+  .dark .card-border-pink-900:hover {
+    box-shadow: 6px 6px 0 hsl(330 100% 40%) !important;
+  }
+
+  /* NEOBRUTALIST UTILITIES */
+  .neo-border {
+    border: 3px solid hsl(var(--border));
+  }
+
+  .neo-border-thick {
+    border: 4px solid hsl(var(--border));
+  }
+
+  .neo-shadow {
+    box-shadow: 4px 4px 0 hsl(var(--border));
+  }
+
+  .neo-shadow-lg {
+    box-shadow: 6px 6px 0 hsl(var(--border));
+  }
+
+  .neo-hover {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .neo-hover:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 hsl(var(--border));
+  }
+
+  .neo-hover:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0 hsl(var(--border));
+  }
+
+  .neo-pressed:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0 hsl(var(--border));
+  }
+}
