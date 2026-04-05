@@ -1,12 +1,7 @@
 import { motion } from "framer-motion";
 import { Users, Briefcase, UserCheck, FileText, TrendingUp, Activity } from "lucide-react";
 
-const stats = [
-  { label: "Total Users", value: "2,847", icon: Users, color: "bg-neo-blue" },
-  { label: "Active Jobs", value: "156", icon: Briefcase, color: "bg-neo-yellow" },
-  { label: "Recruiters", value: "89", icon: UserCheck, color: "bg-neo-purple" },
-  { label: "Applications", value: "4,231", icon: FileText, color: "bg-success" },
-];
+import { stats } from "../../lib/data";
 
 const AdminDashboard = () => {
   return (
