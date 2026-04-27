@@ -22,7 +22,7 @@ export const steps = [
   { num: "01", icon: FileText, title: "Upload Resume", desc: "Drop your resume and let AI parse your skills instantly.", color: "bg-neo-yellow" },
   { num: "02", icon: Video, title: "AI Interview", desc: "Face an adaptive AI interview with camera, audio, or text.", color: "bg-neo-blue" },
   { num: "03", icon: UserCheck, title: "Get Evaluated", desc: "AI scores your answers on clarity, confidence, and accuracy.", color: "bg-neo-purple" },
-  { num: "04", icon: Award, title: "Land the Job", desc: "Top scorers get matched to recruiters and receive offers.", color: "bg-neo-yellow" },
+  { num: "04", icon: Award, title: "Land the Job", desc: "Top scorers get matched to organizations and receive offers.", color: "bg-neo-yellow" },
 ];
 
 export const mockJobs = [
@@ -49,7 +49,7 @@ export const mockUsers = [
   { id: 5, name: "Eva Brown", email: "eva@mail.com", role: "User", status: "Active" },
 ];
 
-export const recruiters = [
+export const organizations = [
   { id: 1, name: "Sarah Chen", company: "TechCorp", campaigns: 5, hired: 23 },
   { id: 2, name: "Mike Ross", company: "DesignLab", campaigns: 3, hired: 12 },
   { id: 3, name: "Lena Park", company: "DataFlow", campaigns: 8, hired: 45 },

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Plus, Megaphone, Users, TrendingUp, CheckCircle, Brain, Target } from "lucide-react";
 
-const RecruiterHome = () => {
+const OrganizationHome = () => {
   return (
     <div>
       {/* Hero */}
@@ -23,7 +23,7 @@ const RecruiterHome = () => {
               AI-powered campaigns. Real candidates. Zero guesswork. Let our 3D intelligence engine handle your hiring.
             </p>
             <Link
-              to="/recruiter/campaign/new"
+              to="/organization/campaign/new"
               className="inline-flex items-center gap-2 px-6 md:px-8 lg:px-10 py-3 md:py-4 lg:py-5 bg-neo-purple text-neo-purple-foreground neo-border-thick neo-shadow-lg font-bold text-base md:text-lg lg:text-xl uppercase neo-hover"
             >
               <Plus className="w-5 h-5" />
@@ -120,4 +120,4 @@ const RecruiterHome = () => {
   );
 };
 
-export default RecruiterHome;
+export default OrganizationHome;

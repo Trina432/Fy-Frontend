@@ -10,19 +10,19 @@ import apiClient from "./api-client";
 export type BackendUserType = "candidate" | "organization" | "admin";
 
 /** Frontend role display values */
-export type FrontendRole = "user" | "recruiter" | "admin";
+export type FrontendRole = "user" | "organization" | "admin";
 
 /** Maps frontend role → backend user_type */
 export const roleToUserType: Record<FrontendRole, BackendUserType> = {
   user: "candidate",
-  recruiter: "organization",
+  organization: "organization",
   admin: "admin",
 };
 
 /** Maps backend user_type → frontend role */
 export const userTypeToRole: Record<BackendUserType, FrontendRole> = {
   candidate: "user",
-  organization: "recruiter",
+  organization: "organization",
   admin: "admin",
 };
 

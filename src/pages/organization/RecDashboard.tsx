@@ -28,10 +28,10 @@ const RecDashboard = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 lg:gap-6">
-          <a href="/recruiter/rec/calendar" className="px-6 md:px-8 lg:px-10 py-3 md:py-4 lg:py-5 bg-primary text-primary-foreground neo-border neo-shadow font-bold uppercase neo-hover text-center">
+          <a href="/organization/rec/calendar" className="px-6 md:px-8 lg:px-10 py-3 md:py-4 lg:py-5 bg-primary text-primary-foreground neo-border neo-shadow font-bold uppercase neo-hover text-center">
             View Calendar
           </a>
-          <a href="/recruiter/rec/schedule" className="px-6 md:px-8 lg:px-10 py-3 md:py-4 lg:py-5 bg-neo-purple text-neo-purple-foreground neo-border neo-shadow font-bold uppercase neo-hover text-center">
+          <a href="/organization/rec/schedule" className="px-6 md:px-8 lg:px-10 py-3 md:py-4 lg:py-5 bg-neo-purple text-neo-purple-foreground neo-border neo-shadow font-bold uppercase neo-hover text-center">
             Schedule Interview
           </a>
         </div>

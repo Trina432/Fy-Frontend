@@ -1,4 +1,6 @@
-import { BarChart3, Users, CheckCircle, Clock } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { BarChart3, Users, CheckCircle, Clock, Plus, Loader2 } from "lucide-react";
 import {
   BarChart,
   Bar,
@@ -9,22 +11,26 @@ import {
   Legend,
   ResponsiveContainer
 } from "recharts";
+import { campaignApi, Campaign } from "@/lib/campaign-api";
 
-const campaigns = [
-  { id: 1, title: "Senior React Dev", applicants: 45, interviews: 12, offers: 3, status: "Active" },
-  { id: 2, title: "Product Designer", applicants: 38, interviews: 8, offers: 2, status: "Active" },
-  { id: 3, title: "Backend Engineer", applicants: 62, interviews: 15, offers: 5, status: "Closed" },
-  { id: 4, title: "ML Researcher", applicants: 25, interviews: 5, offers: 1, status: "Active" },
-];
+const OrganizationDashboard = () => {
+  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-const chartData = campaigns.map(c => ({
-  name: c.title.split(' ')[0], 
-  applicants: c.applicants,
-  interviews: c.interviews,
-  offers: c.offers
-}));
+  useEffect(() => {
+    campaignApi.listCampaigns()
+      .then(data => setCampaigns(data))
+      .catch(err => console.error("Failed to load campaigns", err))
+      .finally(() => setIsLoading(false));
+  }, []);
 
-const RecruiterDashboard = () => {
+  // For charts, we use mock numbers for now since we don't have applicant stats yet
+  const chartData = campaigns.slice(0, 4).map(c => ({
+    name: c.title.split(' ')[0] || 'Role', 
+    applicants: Math.floor(Math.random() * 50) + 10,
+    interviews: Math.floor(Math.random() * 20) + 5,
+    offers: Math.floor(Math.random() * 5) + 1
+  }));
   return (
     <div className="py-16 bg-polka min-h-screen">
       <div className="container mx-auto px-4">
@@ -83,32 +89,53 @@ const RecruiterDashboard = () => {
 
         {/* Campaigns Table */}
         <div className="neo-border-thick neo-shadow-lg overflow-hidden bg-background">
-          <div className="p-4 border-b-[3px] border-border bg-neo-purple">
-            <h3 className="font-bold text-xl text-primary-foreground font-mono inline-block">Active Campaigns</h3>
+          <div className="p-4 border-b-[3px] border-border bg-neo-purple flex justify-between items-center">
+            <h3 className="font-bold text-xl text-primary-foreground font-mono inline-block">Existing Campaigns</h3>
+            <Link 
+              to="/organization/campaign/new"
+              className="flex items-center gap-2 px-4 py-2 bg-neo-yellow text-black neo-border font-bold uppercase text-sm neo-hover"
+            >
+              <Plus className="w-4 h-4" /> Create New
+            </Link>
           </div>
           <table className="w-full">
             <thead>
               <tr className="border-b-[3px] border-border bg-muted">
                 <th className="text-left p-4 font-bold text-xs uppercase tracking-wider">Campaign</th>
-                <th className="text-left p-4 font-bold text-xs uppercase tracking-wider">Applicants</th>
-                <th className="text-left p-4 font-bold text-xs uppercase tracking-wider">Interviews</th>
-                <th className="text-left p-4 font-bold text-xs uppercase tracking-wider">Offers</th>
-                <th className="text-left p-4 font-bold text-xs uppercase tracking-wider">Status</th>
+                <th className="text-left p-4 font-bold text-xs uppercase tracking-wider">Location</th>
+                <th className="text-left p-4 font-bold text-xs uppercase tracking-wider">Type</th>
+                <th className="text-left p-4 font-bold text-xs uppercase tracking-wider">Created</th>
+                <th className="text-left p-4 font-bold text-xs uppercase tracking-wider">Action</th>
               </tr>
             </thead>
             <tbody>
-              {campaigns.map((c) => (
+              {isLoading ? (
+                <tr>
+                  <td colSpan={5} className="p-8 text-center">
+                    <Loader2 className="w-8 h-8 animate-spin mx-auto text-muted-foreground" />
+                  </td>
+                </tr>
+              ) : campaigns.length === 0 ? (
+                <tr>
+                  <td colSpan={5} className="p-8 text-center font-bold text-muted-foreground">
+                    No campaigns found. Create your first one!
+                  </td>
+                </tr>
+              ) : campaigns.map((c) => (
                 <tr key={c.id} className="border-b-[3px] border-border last:border-b-0 neo-hover">
                   <td className="p-4 font-bold">{c.title}</td>
-                  <td className="p-4 font-mono font-bold">{c.applicants}</td>
-                  <td className="p-4 font-mono font-bold">{c.interviews}</td>
-                  <td className="p-4 font-mono font-bold">{c.offers}</td>
+                  <td className="p-4 font-semibold text-muted-foreground">{c.location || "Anywhere"}</td>
+                  <td className="p-4 font-semibold text-muted-foreground">{c.is_remote ? "Remote" : "On-site"}</td>
+                  <td className="p-4 font-semibold text-muted-foreground">
+                    {new Date(c.created_at).toLocaleDateString()}
+                  </td>
                   <td className="p-4">
-                    <span className={`px-3 py-1 neo-border font-bold text-xs ${
-                      c.status === "Active" ? "bg-success text-success-foreground" : "bg-muted text-muted-foreground"
-                    }`}>
-                      {c.status}
-                    </span>
+                    <Link
+                      to={`/organization/campaign/${c.id}`}
+                      className="px-4 py-2 bg-neo-blue text-primary-foreground font-bold uppercase text-xs neo-border neo-hover inline-block"
+                    >
+                      Manage
+                    </Link>
                   </td>
                 </tr>
               ))}
@@ -120,4 +147,4 @@ const RecruiterDashboard = () => {
   );
 };
 
-export default RecruiterDashboard;
+export default OrganizationDashboard;
