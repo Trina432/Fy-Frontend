@@ -7,7 +7,7 @@ import { Loader2 } from "lucide-react";
 const roles: { value: UserRole; label: string; color: string }[] = [
   { value: "user", label: "Job Seeker", color: "bg-neo-blue" },
   { value: "admin", label: "Admin", color: "bg-neo-yellow" },
-  { value: "recruiter", label: "Recruiter", color: "bg-neo-purple" },
+  { value: "organization", label: "Org", color: "bg-neo-purple" },
 ];
 
 const Login = () => {
@@ -24,7 +24,7 @@ const Login = () => {
       const paths: Record<UserRole, string> = {
         user: "/user",
         admin: "/admin",
-        recruiter: "/recruiter",
+        organization: "/organization",
       };
       navigate(paths[role]);
     } catch {
@@ -119,12 +119,12 @@ const Login = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 bg-primary text-primary-foreground neo-border neo-shadow font-bold text-base sm:text-lg md:text-xl uppercase tracking-wider neo-hover flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full bg-primary text-primary-foreground font-bold py-3 px-4 neo-border-thick neo-shadow neo-hover uppercase flex justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? (
               <>
-                <Loader2 className="w-5 h-5 animate-spin" />
-                Signing in…
+                <Loader2 className="w-5 h-5 animate-spin mr-2" />
+                Signing In...
               </>
             ) : (
               "Sign In →"

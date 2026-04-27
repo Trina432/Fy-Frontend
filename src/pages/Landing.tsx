@@ -36,7 +36,7 @@ const steps = [
   { num: "01", icon: FileText, title: "Upload Resume", desc: "Drop your resume and let AI parse your skills instantly.", color: "bg-neo-yellow" },
   { num: "02", icon: Video, title: "AI Interview", desc: "Face an adaptive AI interview with camera, audio, or text.", color: "bg-neo-blue" },
   { num: "03", icon: UserCheck, title: "Get Evaluated", desc: "AI scores your answers on clarity, confidence, and accuracy.", color: "bg-neo-purple" },
-  { num: "04", icon: Award, title: "Land the Job", desc: "Top scorers get matched to recruiters and receive offers.", color: "bg-neo-yellow" },
+  { num: "04", icon: Award, title: "Land the Job", desc: "Top scorers get matched to organizations and receive offers.", color: "bg-neo-yellow" },
 ];
 
 const mockJobs = [
@@ -267,7 +267,7 @@ const Landing = () => {
             Why IntervueX?
           </h2>
           <p className="text-center font-semibold mb-14 max-w-lg mx-auto dark:text-black light:text-gray-700">
-            Built for candidates and recruiters who value fairness and speed.
+            Built for candidates and organizations who value fairness and speed.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {features.map((f, i) => (
@@ -364,7 +364,7 @@ const Landing = () => {
             </span>
           </h2>
           <p className="text-muted-foreground font-semibold mb-8 max-w-md mx-auto">
-            Join thousands of candidates and recruiters already using IntervueX.
+            Join thousands of candidates and organizations already using IntervueX.
           </p>
           <Link
             to="/signup"

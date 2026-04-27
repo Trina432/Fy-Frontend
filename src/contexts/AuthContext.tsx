@@ -23,7 +23,7 @@ import {
 } from "@/store/authSlice";
 import type { AuthUser } from "@/store/authSlice";
 
-export type UserRole = "user" | "admin" | "recruiter";
+export type UserRole = "user" | "admin" | "organization";
 
 // ── Context shape (kept backward-compatible) ───────────────────────────────
 
@@ -31,6 +31,7 @@ interface AuthContextType {
   user: AuthUser | null;
   isAuthenticated: boolean;
   isLoading: boolean;
+  isHydrating: boolean;
   error: string | null;
   /** Sign-in – mirrors the old `login(email, password, role)` signature */
   login: (email: string, password: string, role: UserRole) => Promise<void>;
@@ -109,6 +110,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     user,
     isAuthenticated: status === "authenticated",
     isLoading: status === "loading",
+    isHydrating: status === "loading" && !user && !!accessToken,
     error,
     login,
     signup,

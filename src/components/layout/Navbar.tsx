@@ -16,12 +16,12 @@ const navLinks: Record<string, { label: string; path: string }[]> = {
   admin: [
     { label: "Dashboard", path: "/admin" },
     { label: "Users", path: "/admin/users" },
-    { label: "Recruiters", path: "/admin/recruiters" },
+    { label: "Organizations", path: "/admin/organizations" },
   ],
-  recruiter: [
-    { label: "Home", path: "/recruiter" },
-    { label: "Dashboard", path: "/recruiter/dashboard" },
-    { label: "Rec Panel", path: "/recruiter/rec" },
+  organization: [
+    { label: "Home", path: "/organization" },
+    { label: "Dashboard", path: "/organization/dashboard" },
+    { label: "Org Panel", path: "/organization/rec" },
   ],
 };
 
@@ -75,9 +75,9 @@ export const Navbar = () => {
           {/* Desktop user info and controls */}
           <div className="hidden md:flex items-center gap-2">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 neo-border neo-shadow bg-neo-blue flex items-center justify-center">
+              <Link to={`/${user.role}/profile`} className="w-8 h-8 neo-border neo-shadow bg-neo-blue flex items-center justify-center neo-hover cursor-pointer">
                 <User className="w-4 h-4 text-neo-blue-foreground" />
-              </div>
+              </Link>
               <Badge className="neo-border bg-secondary text-secondary-foreground text-xs font-bold uppercase tracking-wider">
                 {user.role}
               </Badge>

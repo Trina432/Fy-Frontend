@@ -25,11 +25,11 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
       ? [
           { label: "Dashboard", path: "/admin", icon: Home },
           { label: "Users", path: "/admin/users", icon: Users },
-          { label: "Recruiters", path: "/admin/recruiters", icon: Users },
+          { label: "Organizations", path: "/admin/organizations", icon: Users },
         ]
       : [
-          { label: "Dashboard", path: "/recruiter/dashboard", icon: BarChart3 },
-          { label: "Rec Panel", path: "/recruiter/rec", icon: Users },
+          { label: "Dashboard", path: "/organization/dashboard", icon: BarChart3 },
+          { label: "Org Panel", path: "/organization/rec", icon: Users },
         ]),
   ];
 
@@ -90,9 +90,9 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
           {/* User Info & Logout */}
           <div className="p-4 border-t-[3px] border-border">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 neo-border neo-shadow bg-neo-blue flex items-center justify-center">
+              <Link to={`/${user.role}/profile`} onClick={onClose} className="w-10 h-10 neo-border neo-shadow bg-neo-blue flex items-center justify-center neo-hover">
                 <User className="w-5 h-5 text-neo-blue-foreground" />
-              </div>
+              </Link>
               <div>
                 <p className="font-bold text-sm">{user.email}</p>
                 <p className="text-xs font-semibold text-muted-foreground uppercase">
