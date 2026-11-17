@@ -193,7 +193,16 @@ const AIInterview = () => {
     const token = localStorage.getItem(TOKEN_KEYS.access);
     if (!token) return;
 
-    const wsUrl = `${window.location.protocol === "https:" ? "wss:" : "ws:"}//${window.location.host}/api/v1/ws/proctoring/${id}?token=${token}`;
+    let wsBase: string;
+    const apiUrl = import.meta.env.VITE_API_URL;
+    if (apiUrl) {
+      const cleanUrl = apiUrl.replace(/\/+$/, "").replace(/^http/, "ws");
+      wsBase = cleanUrl.endsWith("/api/v1") ? cleanUrl : `${cleanUrl}/api/v1`;
+    } else {
+      const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+      wsBase = `${protocol}//${window.location.host}/api/v1`;
+    }
+    const wsUrl = `${wsBase}/ws/proctoring/${id}?token=${token}`;
 
     const ws = new WebSocket(wsUrl);
     wsRef.current = ws;

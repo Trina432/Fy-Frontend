@@ -9,7 +9,13 @@
  */
 import axios, { type AxiosRequestConfig, type AxiosResponse } from "axios";
 
-const BASE_URL = "/api/v1"; // Vite proxies /api → http://localhost:8000
+// Resolve base URL: in production (Vercel), uses VITE_API_URL. In local dev, falls back to /api/v1 (proxied by Vite).
+const rawApiUrl = (import.meta.env.VITE_API_URL || "").replace(/\/+$/, "");
+const BASE_URL = rawApiUrl
+  ? rawApiUrl.endsWith("/api/v1")
+    ? rawApiUrl
+    : `${rawApiUrl}/api/v1`
+  : "/api/v1";
 
 // Storage keys (centralised so they're consistent everywhere)
 export const TOKEN_KEYS = {
